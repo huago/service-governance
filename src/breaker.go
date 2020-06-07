@@ -44,13 +44,13 @@ func InitBreaker(config *Config) *Breaker {
 	}
 
 	// 启动定时器，定时将rpc资源的熔断状态从打开置为半打开
-	go autoMidOpen(breaker)
+	go autoHalfOpen(breaker)
 
 	return breaker
 }
 
 // 自动rpc资源的熔断状态由打开置为半打开
-func autoMidOpen(breaker *Breaker) {
+func autoHalfOpen(breaker *Breaker) {
 	ticker := time.NewTicker(5 * time.Second)
 	defer ticker.Stop()
 
