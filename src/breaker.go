@@ -49,7 +49,7 @@ func InitBreaker(config *Config) *Breaker {
 	return breaker
 }
 
-// 自动rpc资源的熔断状态由打开置为半打开
+// 自动将rpc资源的熔断状态由打开置为半打开
 func autoHalfOpen(breaker *Breaker) {
 	ticker := time.NewTicker(5 * time.Second)
 	defer ticker.Stop()
